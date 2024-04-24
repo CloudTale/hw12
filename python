@@ -1,0 +1,28 @@
+class Solution:
+    def minCostToSupplyWater(self, n, wells, pipes):
+
+        nums = pipes + [[0, i + 1, wells[i]] for i in range(n)]
+
+        nums.sort(key=lambda x: x[2])
+
+        self.p = [i for i in range(n + 1)]
+        ans = 0
+        
+
+        def find(x):
+            if self.p[x] != x:
+                self.p[x] = find(self.p[x])
+            return self.p[x]
+        
+        # Iterate over pipes
+        for a, b, c in nums:
+            pa = find(a)
+            pb = find(b)
+            if pa != pb:
+                self.p[pa] = pb
+                ans += c
+                n -= 1
+                if n == 0:
+                    return ans
+        return ans
+

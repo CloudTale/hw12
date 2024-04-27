@@ -1,1 +1,1 @@
-
+We create an array to store pipes and wells information. Then we add well information to nums array. From there we sort the num array nased on the cost. After we initiazlize the array to store parent pointers and initialize the total cost. We iterate over the sorted nums array and find the parent nodes of a and b. If parent nodes are no the same, connect them and update. If all houses are connected return the total cost.
